@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anil Jangir - DevOps Engineer</title>
+  <!-- Simple Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v8/font/simple-icons.min.css">
+  <style>
+    :root {
+      --primary: #3a8dde;
+      --secondary: #59c8ce;
+      --bg-light: #f5f7fa;
+      --bg-dark: #23272f;
+      --text-light: #333;
+      --text-dark: #ecf0f1;
+      --card-bg-light: #fff;
+      --card-bg-dark: #2c2f36;
+      --badge-bg: #e0e0e0;
+      --badge-bg-dark: #444;
+      --section-bg-light: #fefefe;
+      --section-bg-dark: #23272f;
+      --section-alt-bg-light: #e0f7fa;
+      --section-alt-bg-dark: #1a1d22;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg-light);
+      color: var(--text-light);
+      margin: 0;
+      padding: 0;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark-mode {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      color: #d0dce7; /* softened white/ice blue */
+      padding: 40px 20px;
+      text-align: center;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark-mode header {
+      background: linear-gradient(45deg, #254f7d, #2a828f); /* darker blues */
+      color: #aac4d7; /* light blue-gray text */
+    }
+    header img {
+      border-radius: 50%;
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border: 4px solid white;
+      transition: border-color 0.3s;
+    }
+    body.dark-mode header img {
+      border-color: #aac4d7;
+    }
+    header p {
+      color: #bfd4e8;
+      font-weight: 600;
+      margin: 5px 0 0 0;
+      transition: color 0.3s;
+    }
+    body.dark-mode header p {
+      color: #8eaecb;
+    }
+
+    /* Toggle button */
+    .toggle-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #fff;
+      color: var(--primary);
+      border: none;
+      border-radius: 20px;
+      padding: 8px 18px;
+      font-size: 1em;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark-mode .toggle-btn {
+      background: #23272f;
+      color: #fff;
+    }
+
+    /* Experience Section */
+    #experience {
+      background: var(--card-bg-light);
+      color: var(--text-light);
+      border-radius: 16px;
+      padding: 40px 30px;
+      max-width: 900px;
+      margin: 40px auto;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    }
+    body.dark-mode #experience {
+      background: var(--card-bg-dark);
+      color: var(--text-dark);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+    }
+    #experience h2 {
+      color: #324a71;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.4em;
+      transition: color 0.3s;
+    }
+    body.dark-mode #experience h2 {
+      color: #aec3d3;
+    }
+
+    #repos_dark h2 {
+      color: #324a71;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.4em;
+      transition: color 0.3s;
+    }
+    body.dark-mode #experience h2 {
+      color: #aec3d3;
+    }
+
+    #aboutus_dark h2 {
+      color: #324a71;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.4em;
+      transition: color 0.3s;
+    }
+    body.dark-mode #experience h2 {
+      color: #aec3d3;
+    }
+
+    /* Experience Cards */
+    .experience-card {
+      background: #f0f4f8;
+      color: #222;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      border-left: 6px solid var(--primary);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+    }
+    body.dark-mode .experience-card {
+      background: #303846; /* lighter dark blue/gray */
+      color: #d0d8e7;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+    .experience-card:nth-child(2) {
+      border-left-color: #fdcb6e; /* gold accent */
+    }
+    .experience-card:nth-child(3) {
+      border-left-color: #00b894; /* green accent */
+    }
+    .experience-card h3 {
+      margin-top: 0;
+      font-size: 1.3em;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    .experience-card p {
+      margin: 0;
+      font-size: 1em;
+      line-height: 1.6;
+    }
+    body.dark-mode .experience-card p {
+      color: #b0b8c3;
+    }
+
+    .boxed-section {
+    background: var(--card-bg-light);
+    color: var(--text-light);
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark-mode .boxed-section {
+    background: var(--card-bg-dark);
+    color: var(--text-dark);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+    }
+
+    .repos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .repo {
+      background: var(--card-bg-light);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s;
+    }
+    body.dark-mode .repo {
+      background: var(--card-bg-dark);
+    }
+    .repo h3 {
+      margin-top: 0;
+      font-size: 1.2em;
+    }
+    .repo p {
+      margin: 8px 0;
+      color: #555;
+    }
+    body.dark-mode .repo p {
+      color: #bbb;
+    }
+    footer {
+      text-align: center;
+      margin: 40px 0;
+      background: var(--card-bg-light);
+      color: var(--text-light);
+      padding: 30px 20px;
+      font-size: 0.95em;
+      border-radius: 12px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark-mode footer {
+      background: var(--card-bg-dark);
+      color: var(--text-dark);
+    }
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .highlight-link {
+      color: #ffffff;
+      font-weight: bold;
+    }
+    .highlight-link:hover {
+      color: #e0e0e0;
+    }
+    .tech-icons img {
+    width: 40px !important;
+    height: 40px !important;
+    border: none;
+    vertical-align: middle;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--badge-bg);
+      color: #333;
+      border-radius: 12px;
+      padding: 3px 12px;
+      font-size: 0.85em;
+      margin-right: 6px;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+    body.dark-mode .badge {
+      background: var(--badge-bg-dark);
+      color: #eee;
+    }
+    .page-count {
+      font-size: 1em;
+      color: #080000;
+      font-weight: bold;
+      margin-top: 10px;
+      text-align: center;
+    }
+    body.dark-mode .page-count {
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-btn" onclick="toggleMode()" aria-label="Toggle dark mode">🌙 Dark Mode</button>
+  <header>
+    <img 
+      src="https://avatars.githubusercontent.com/u/20415806?v=4" alt="Anil Jangir"
+      style="border-radius: 50%; width: 160px; height: 160px; object-fit: cover; border: 4px solid white;" 
+    />
+    <h1 style="margin: 15px 0 5px; font-size: 2.2em;">Anil Jangir</h1>
+    <p style="font-size: 1.1em; margin: 5px 0;">
+      👨‍💼 <strong>DevOps Engineer</strong> with <strong>9+ years</strong>
+    </p>
+    <p style="margin: 10px 0; font-size: 1em;">
+      ✨ Platform Engineer |  👨🏻‍💻Bash | ♾️CI/CD | 🔭Observability | ⚙️Automation<br/>
+      🌱 Learning: <strong>
+        <img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" 
+             alt="Kubernetes" 
+             style="width: 20px; height: 20px; vertical-align: middle;" /> 
+        Kubernetes
+      </strong>
+    </p>
+    <div class="tech-icons" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 50px 0 10px 0;">
+
+  <a href="https://aws.amazon.com" target="_blank" rel="noreferrer">
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="16" height="16" title="AWS" />
+  </a> 
+  <a href="https://azure.microsoft.com/en-in/" target="_blank" rel="noreferrer">
+    <img src="https://www.vectorlogo.zone/logos/microsoft_azure/microsoft_azure-icon.svg" alt="azure" width="16" height="16" title="Azure" />
+  </a>
+  <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noreferrer">
+    <img src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg" alt="bash" width="10" height="10" title="Bash" />
+  </a>
+  <a href="https://www.docker.com/" target="_blank" rel="noreferrer">
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="docker" width="10" height="10" title="Docker" />
+  </a>
+  <a href="https://cloud.google.com" target="_blank" rel="noreferrer">
+    <img src="https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg" alt="gcp" width="10" height="10" title="GCP" />
+  </a>
+  <a href="https://git-scm.com/" target="_blank" rel="noreferrer">
+    <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="10" height="10" title="Git" />
+  </a>
+  <a href="https://www.jenkins.io" target="_blank" rel="noreferrer">
+    <img src="https://www.vectorlogo.zone/logos/jenkins/jenkins-icon.svg" alt="jenkins" width="10" height="10" title="Jenkins" />
+  </a>
+  <a href="https://www.linux.org/" target="_blank" rel="noreferrer">
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="linux" width="10" height="10" title="Linux" />
+  </a>
+  <a href="https://www.nginx.com" target="_blank" rel="noreferrer">
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nginx/nginx-original.svg" alt="nginx" width="10" height="10" title="Nginx" />
+  </a>
+  <a href="https://www.zabbix.com/" target="_blank" rel="noreferrer">
+    <img src="https://www.vectorlogo.zone/logos/zabbix/zabbix-icon.svg" alt="Zabbix" width="10" height="10" title="Zabbix" />
+  </a>
+  <a href="https://www.godaddy.com" target="_blank" rel="noreferrer">
+    <img src="https://www.vectorlogo.zone/logos/godaddy/godaddy-icon.svg" alt="Godaddy" width="10" height="10" title="GoDaddy" />
+  </a>
+  <a href="https://httpd.apache.org/" target="_blank" rel="noreferrer">
+    <img src="https://www.vectorlogo.zone/logos/apache/apache-ar21.svg" alt="Apache2" width="10" height="10" title="Apache2" />
+  </a>
+  <a href="https://www.cloudflare.com/" target="_blank" rel="noreferrer">
+    <img src="https://www.vectorlogo.zone/logos/cloudflare/cloudflare-icon.svg" alt="Cloudflare" width="10" height="10" title="Cloudflare" />
+  </a>
+  <a href="https://www.terraform.io/" target="_blank" rel="noreferrer">
+    <img src="https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg" alt="Terraform" width="10" height="10" title="Terraform" />
+  </a>
+</div>
+    </div>
+    <p style="margin-top: 30px;">
+      📫 
+      <a href="mailto:aniljahangir8@gmail.com" class="highlight-link">
+        aniljahangir8@gmail.com
+      </a> &nbsp;|&nbsp;
+      <a href="https://github.com/aniljahangir8" target="_blank" rel="noopener noreferrer" class="highlight-link">
+        GitHub
+      </a> &nbsp;|&nbsp;
+      <a href="https://www.linkedin.com/in/anil-jangir-06344a139/" target="_blank" rel="noopener noreferrer" class="highlight-link">
+        LinkedIn
+      </a>
+    </p>
+    <div class="page-count" id="pageCount">Page views: ...</div>
+  </header>
+
+  <section class="boxed-section">
+    <div style="max-width: 900px; margin: auto; text-align: center;">
+      <h1 style="text-align: center; font-size: 2.5em; color: #324a71;">👨‍💻 About Me</h1>
+      <div style="font-size: 18px; line-height: 1.6;">
+  <p>👨‍💻 <strong>DevOps Engineer</strong> | with over <strong>9 Years</strong> of Cloud & Infrastructure Expertise | AWS | Docker | Kubernetes | Automation Enthusiast</p>
+
+  <p>
+    Born in <strong>Rajasthan</strong> <em>(Tudiyaan Da Putt)</em>, who journeyed to <strong>Chandigarh</strong> for education and growth, and now thriving in <strong>Gujarat</strong> — my career is as dynamic as the cloud environments I manage.
+  </p>
+
+  <p>
+    With <strong>9 years of hands-on experience</strong>, I specialize in building, automating, and optimizing scalable infrastructures across <strong>AWS, Google Cloud, and Azure</strong>.
+  </p>
+
+  <!--<p>
+    🛠 <strong>Tools & Technologies:</strong><br>
+    Linux & Windows Servers | Docker | Kubernetes | Terraform | Ansible | Jenkins | GitLab CI/CD | Apache | NGINX | Prometheus | Grafana | ELK Stack | Bash | Python | Git | MySQL | MongoDB | Redis | RabbitMQ | Cloudflare | S3 | EC2 | VPC | IAM
+  </p>-->
+
+  <p>
+    🚀 <strong>What I Do Best:</strong><br>
+    • Architecting & maintaining secure, resilient cloud infrastructures<br>
+    • Automating deployments and scaling applications smoothly<br>
+    • Leading CI/CD implementations for faster, safer releases<br>
+    • Collaborating with dev teams to streamline development lifecycles<br>
+    • Monitoring performance and proactively resolving incidents
+  </p>
+
+  <p>
+    🧠 I stay ahead by constantly learning new technologies and adopting DevOps best practices to deliver <strong>innovative, efficient, and secure solutions</strong>. Whether it's troubleshooting under pressure or driving process improvements, I bring both technical depth and strategic thinking to the table.
+  </p>
+
+  <p>
+    📩 Let’s connect — whether you’re hiring, collaborating, or just want to geek out over cloud architecture.
+  </p>
+</div>
+  </section>
+
+  <section id="experience" class="boxed-section">
+    <h2>💼 Experience Highlights</h2>
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <div class="experience-card" style="border-left: 6px solid var(--primary);">
+        <h3>🔧 DevOps/K8s Platform</h3>
+        <p>
+          Drove enterprise-wide Kubernetes adoption (EKS, AKS, GKE, on-prem) across <strong>99+ production environments</strong>, slashing deployment times by <strong>80%</strong> and achieving <strong>99.99% uptime</strong>. Orchestrated end-to-end CI/CD automation with GitHub Actions, Jenkins, and ArgoCD, reducing manual release effort by <strong>80%</strong> and accelerating delivery velocity.
+        </p>
+      </div>
+      <div class="experience-card" style="border-left: 6px solid #fdcb6e;">
+        <h3>☁️ Cloud Migrations & Reliability</h3>
+        <p>
+          Drove cloud modernization for <strong>25+ core applications</strong> on AWS and Azure, unifying infrastructure as code and observability. Reduced MTTR by <strong>40%</strong> and critical incidents by <strong>35%</strong> through Prometheus, Grafana, and ELK integrations.
+        </p>
+      </div>
+      <div class="experience-card" style="border-left: 6px solid #00b894;">
+        <h3>🏗️ Platform Engineering</h3>
+        <p>
+          Engineered robust internal platforms using <strong>Terraform, Ansible, and Helm/Kustomize</strong> to power <strong>47+ microservices</strong>. Achieved seamless zero-downtime deployments and championed GitOps practices, tripling release frequency and reducing rollbacks by <strong>60%</strong>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+<section  id="experience" class="boxed-section">
+<h1 style="text-align: center; font-size: 2.5em; color: #324a71;">📌 Pinned Projects</h1>
+    <div class="repos">
+      <div class="repo">
+        <h3><a href="https://github.com/Aniljahangir8/Keylogger">🔐 Keylogger</a></h3>
+        <p>Lets take a logs which you pressed on keyboard.</p>
+        <span class="badge" style="font-weight: bold;">Linux</span>
+        <span class="badge" style="font-weight: bold;">Bash</span>
+        <span class="badge" style="font-weight: bold;">Simple Code</span>
+      </div>
+
+      <div class="repo">
+        <h3><a href="https://github.com/Aniljahangir8/LAMP-Installation">🌐 LAMP Stack</a></h3>
+        <p>Lamp Stack Installation Guide Helps me in old Days</p>
+        <span class="badge" style="font-weight: bold;">LAMP</span>
+        <span class="badge" style="font-weight: bold;">LINUX</span>
+        <span class="badge" style="font-weight: bold;">PHP</span>
+      </div>
+
+      <div class="repo">
+        <h3><a href="https://github.com/Aniljahangir8/Redirect-Code">🅱 Htaccess Code</a></h3>
+        <p>Redirects to any one or any other location Basic redirects</p>
+        <span class="badge" style="font-weight: bold;">Apache2</span>
+        <span class="badge" style="font-weight: bold;" >Htaccess</span>
+        <span class="badge"style="font-weight: bold;" >Redirect</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Other sections and footer as before -->
+
+  <footer>
+    <p style="margin: 0;">
+      Designed & developed by <strong>Anil Jangir</strong> • Profile curated via 
+      <a href="https://github.com/aniljahangir8" target="_blank" style="color: #96a9bd; text-decoration: none;">
+        GitHub repo
+      </a>
+    </p>
+  </footer>
+
+  <script>
+    // Dark/Light mode toggle with persistence
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+      let darkMode = document.body.classList.contains('dark-mode');
+      document.querySelector('.toggle-btn').textContent =
+        darkMode ? '☀️ Light Mode' : '🌙 Dark Mode';
+      localStorage.setItem('darkMode', darkMode);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Restore theme preference or default to light mode
+      if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+        document.querySelector('.toggle-btn').textContent = '☀️ Light Mode';
+      } else {
+        document.body.classList.remove('dark-mode');
+        document.querySelector('.toggle-btn').textContent = '🌙 Dark Mode';
+      }
+
+      // Page views counter
+      let pageViews = localStorage.getItem('pageViewCount');
+      if (pageViews) {
+        pageViews = parseInt(pageViews) + 1;
+      } else {
+        pageViews = 1;
+      }
+      localStorage.setItem('pageViewCount', pageViews);
+      document.getElementById('pageCount').textContent = `Page views: ${pageViews}`;
+    });
+  </script>
+</body>
+</html>
