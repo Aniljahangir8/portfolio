@@ -467,36 +467,38 @@
     </p>
   </footer>
 
-  <script>
-    // Dark/Light mode toggle with persistence
-    function toggleMode() {
-      document.body.classList.toggle('dark-mode');
-      let darkMode = document.body.classList.contains('dark-mode');
-      document.querySelector('.toggle-btn').textContent =
-        darkMode ? '☀️ Light Mode' : '🌙 Dark Mode';
-      localStorage.setItem('darkMode', darkMode);
+<script>
+  // Dark/Light mode toggle with persistence
+  function toggleMode() {
+    document.body.classList.toggle('dark-mode');
+    let darkMode = document.body.classList.contains('dark-mode');
+    document.querySelector('.toggle-btn').textContent =
+      darkMode ? '☀️ Light Mode' : '🌙 Dark Mode';
+    localStorage.setItem('darkMode', darkMode);
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Restore theme preference or default to light mode
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+      document.querySelector('.toggle-btn').textContent = '☀️ Light Mode';
+    } else {
+      document.body.classList.remove('dark-mode');
+      document.querySelector('.toggle-btn').textContent = '🌙 Dark Mode';
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-      // Restore theme preference or default to light mode
-      if (localStorage.getItem('darkMode') === 'true') {
-        document.body.classList.add('dark-mode');
-        document.querySelector('.toggle-btn').textContent = '☀️ Light Mode';
-      } else {
-        document.body.classList.remove('dark-mode');
-        document.querySelector('.toggle-btn').textContent = '🌙 Dark Mode';
-      }
+    // 🌍 Global Page views counter using CountAPI
+    fetch('https://api.countapi.xyz/hit/aniljahangir8.github.io/visits')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('pageCount').textContent = `Page views: ${data.value}`;
+      })
+      .catch(err => {
+        console.error('Counter error:', err);
+        document.getElementById('pageCount').textContent = "Page views: N/A";
+      });
+  });
+</script>
 
-      // Page views counter
-      let pageViews = localStorage.getItem('pageViewCount');
-      if (pageViews) {
-        pageViews = parseInt(pageViews) + 1;
-      } else {
-        pageViews = 1;
-      }
-      localStorage.setItem('pageViewCount', pageViews);
-      document.getElementById('pageCount').textContent = `Page views: ${pageViews}`;
-    });
-  </script>
 </body>
 </html>
