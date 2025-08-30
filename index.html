@@ -4,15 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-site-verification" content="chpNK1lT3suVsdu36wF5dZRMK4h16DtvxCJwD8wEXXw" />
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QBV9RMW6QL"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-QBV9RMW6QL');
-</script>
   <title>Anil Jangir - DevOps Engineer</title>
   <!-- Simple Icons CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v8/font/simple-icons.min.css">
@@ -370,7 +361,7 @@
         LinkedIn
       </a>
     </p>
-    <div class="page-count" id="pageCount">Page views: ...</div>
+    <div class="page-count" id="up_count">Page views: ...</div>
   </header>
 
   <section class="boxed-section">
@@ -486,8 +477,8 @@
     localStorage.setItem('darkMode', darkMode);
   }
 
-  document.addEventListener('DOMContentLoaded', function() {
-    // Restore theme preference or default to light mode
+  document.addEventListener('DOMContentLoaded', async function() {
+    // Restore theme preference
     if (localStorage.getItem('darkMode') === 'true') {
       document.body.classList.add('dark-mode');
       document.querySelector('.toggle-btn').textContent = '☀️ Light Mode';
@@ -496,16 +487,21 @@
       document.querySelector('.toggle-btn').textContent = '🌙 Dark Mode';
     }
 
-    // 🌍 Global Page views counter using CountAPI
-    fetch('https://api.countapi.xyz/hit/aniljahangir8.github.io/visits')
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById('pageCount').textContent = `Page views: ${data.value}`;
-      })
-      .catch(err => {
-        console.error('Counter error:', err);
-        document.getElementById('pageCount').textContent = "Page views: N/A";
-      });
+    // Call /up to increment counter
+    try {
+      await fetch("https://api.counterapi.dev/v2/devscsops/githu-counter/up");
+
+      // Fetch stats
+      let statsRes = await fetch("https://api.counterapi.dev/v2/devscsops/githu-counter/stats");
+      let statsData = await statsRes.json();
+
+      // Show page count
+      document.getElementById('up_count').textContent =
+        `Page views: ${statsData.count}`;
+    } catch (err) {
+      console.error("Error fetching counter:", err);
+      document.getElementById('up_count').textContent = "Error loading stats";
+    }
   });
 </script>
 
