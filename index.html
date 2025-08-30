@@ -468,42 +468,41 @@
   </footer>
 
 <script>
-  // Dark/Light mode toggle with persistence
-  function toggleMode() {
-    document.body.classList.toggle('dark-mode');
-    let darkMode = document.body.classList.contains('dark-mode');
-    document.querySelector('.toggle-btn').textContent =
-      darkMode ? '☀️ Light Mode' : '🌙 Dark Mode';
-    localStorage.setItem('darkMode', darkMode);
+    // Dark/Light mode toggle with persistence
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+      let darkMode = document.body.classList.contains('dark-mode');
+      document.querySelector('.toggle-btn').textContent =
+        darkMode ? '☀️ Light Mode' : '🌙 Dark Mode';
+      localStorage.setItem('darkMode', darkMode);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Restore theme preference
+      if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+        document.querySelector('.toggle-btn').textContent = '☀️ Light Mode';
+      } else {
+        document.body.classList.remove('dark-mode');
+        document.querySelector('.toggle-btn').textContent = '🌙 Dark Mode';
+      }
+
+      // Page view counter logic
+ async function updatePageViews() {
+  try {
+    await fetch("https://api.counterapi.dev/v2/devscsops/githu-counter/up");
+    let statsRes = await fetch("https://api.counterapi.dev/v2/devscsops/githu-counter/stats");
+    let statsData = await statsRes.json();
+    // Use the correct property from API response
+    document.getElementById('up_count').textContent =
+      `Page views: ${statsData.data.up_count || "N/A"}`;
+  } catch (err) {
+    console.error("Error fetching counter:", err);
+    document.getElementById('up_count').textContent = "Error loading stats";
   }
-
-  document.addEventListener('DOMContentLoaded', async function() {
-    // Restore theme preference
-    if (localStorage.getItem('darkMode') === 'true') {
-      document.body.classList.add('dark-mode');
-      document.querySelector('.toggle-btn').textContent = '☀️ Light Mode';
-    } else {
-      document.body.classList.remove('dark-mode');
-      document.querySelector('.toggle-btn').textContent = '🌙 Dark Mode';
-    }
-
-    // Call /up to increment counter
-    try {
-      await fetch("https://api.counterapi.dev/v2/devscsops/githu-counter/up");
-
-      // Fetch stats
-      let statsRes = await fetch("https://api.counterapi.dev/v2/devscsops/githu-counter/stats");
-      let statsData = await statsRes.json();
-
-      // Show page count
-      document.getElementById('up_count').textContent =
-        `Page views: ${statsData.count}`;
-    } catch (err) {
-      console.error("Error fetching counter:", err);
-      document.getElementById('up_count').textContent = "Error loading stats";
-    }
-  });
-</script>
-
+}
+      updatePageViews();
+    });
+  </script>
 </body>
 </html>
