@@ -1,507 +1,348 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="chpNK1lT3suVsdu36wF5dZRMK4h16DtvxCJwD8wEXXw" />
-  <title>Anil Jangir - DevOps Engineer</title>
-  <!-- Simple Icons CDN -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v8/font/simple-icons.min.css">
+  <title>Anil Jangir | DevOps & Platform Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #3a8dde;
-      --secondary: #59c8ce;
-      --bg-light: #f5f7fa;
-      --bg-dark: #23272f;
-      --text-light: #333;
-      --text-dark: #ecf0f1;
-      --card-bg-light: #fff;
-      --card-bg-dark: #2c2f36;
-      --badge-bg: #e0e0e0;
-      --badge-bg-dark: #444;
-      --section-bg-light: #fefefe;
-      --section-bg-dark: #23272f;
-      --section-alt-bg-light: #e0f7fa;
-      --section-alt-bg-dark: #1a1d22;
+      --bg-base: #030712;
+      --bg-surface: rgba(17, 24, 39, 0.7);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --accent-primary: #3b82f6;
+      --accent-glow: rgba(59, 130, 246, 0.4);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --card-radius: 20px;
     }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body {
-      font-family: Arial, sans-serif;
-      background: var(--bg-light);
-      color: var(--text-light);
-      margin: 0;
-      padding: 0;
-      transition: background 0.3s, color 0.3s;
-    }
-    body.dark-mode {
-      background: var(--bg-dark);
-      color: var(--text-dark);
-    }
-
-    /* Header */
-    header {
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
-      color: #d0dce7; /* softened white/ice blue */
-      padding: 40px 20px;
-      text-align: center;
-      transition: background 0.3s, color 0.3s;
-    }
-    body.dark-mode header {
-      background: linear-gradient(45deg, #254f7d, #2a828f); /* darker blues */
-      color: #aac4d7; /* light blue-gray text */
-    }
-    header img {
-      border-radius: 50%;
-      width: 160px;
-      height: 160px;
-      object-fit: cover;
-      border: 4px solid white;
-      transition: border-color 0.3s;
-    }
-    body.dark-mode header img {
-      border-color: #aac4d7;
-    }
-    header p {
-      color: #bfd4e8;
-      font-weight: 600;
-      margin: 5px 0 0 0;
-      transition: color 0.3s;
-    }
-    body.dark-mode header p {
-      color: #8eaecb;
-    }
-
-    /* Toggle button */
-    .toggle-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: #fff;
-      color: var(--primary);
-      border: none;
-      border-radius: 20px;
-      padding: 8px 18px;
-      font-size: 1em;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      transition: background 0.3s, color 0.3s;
-    }
-    body.dark-mode .toggle-btn {
-      background: #23272f;
-      color: #fff;
-    }
-
-    /* Experience Section */
-    #experience {
-      background: var(--card-bg-light);
-      color: var(--text-light);
-      border-radius: 16px;
-      padding: 40px 30px;
-      max-width: 900px;
-      margin: 40px auto;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
-    }
-    body.dark-mode #experience {
-      background: var(--card-bg-dark);
-      color: var(--text-dark);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.5);
-    }
-    #experience h2 {
-      color: #324a71;
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 2.4em;
-      transition: color 0.3s;
-    }
-    body.dark-mode #experience h2 {
-      color: #aec3d3;
-    }
-
-    #repos_dark h2 {
-      color: #324a71;
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 2.4em;
-      transition: color 0.3s;
-    }
-    body.dark-mode #experience h2 {
-      color: #aec3d3;
-    }
-
-    #aboutus_dark h2 {
-      color: #324a71;
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 2.4em;
-      transition: color 0.3s;
-    }
-    body.dark-mode #experience h2 {
-      color: #aec3d3;
-    }
-
-    /* Experience Cards */
-    .experience-card {
-      background: #f0f4f8;
-      color: #222;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      border-left: 6px solid var(--primary);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-      transition: background 0.3s, color 0.3s, border-color 0.3s;
-    }
-    body.dark-mode .experience-card {
-      background: #303846; /* lighter dark blue/gray */
-      color: #d0d8e7;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.6);
-    }
-    .experience-card:nth-child(2) {
-      border-left-color: #fdcb6e; /* gold accent */
-    }
-    .experience-card:nth-child(3) {
-      border-left-color: #00b894; /* green accent */
-    }
-    .experience-card h3 {
-      margin-top: 0;
-      font-size: 1.3em;
-      font-weight: bold;
-      margin-bottom: 12px;
-    }
-    .experience-card p {
-      margin: 0;
-      font-size: 1em;
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: 'Outfit', sans-serif;
       line-height: 1.6;
-    }
-    body.dark-mode .experience-card p {
-      color: #b0b8c3;
+      overflow-x: hidden;
     }
 
-    .boxed-section {
-    background: var(--card-bg-light);
-    color: var(--text-light);
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 40px 30px;
-    border-radius: 16px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-    transition: background 0.3s, color 0.3s;
+    /* Animated Grid Background */
+    .bg-grid {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background-image: linear-gradient(var(--border-color) 1px, transparent 1px),
+                        linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: -2;
+      opacity: 0.3;
+      transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
+      animation: gridMove 20s linear infinite;
     }
 
-    body.dark-mode .boxed-section {
-    background: var(--card-bg-dark);
-    color: var(--text-dark);
-    box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+    @keyframes gridMove {
+      0% { transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px); }
+      100% { transform: perspective(500px) rotateX(60deg) translateY(50px) translateZ(-200px); }
     }
 
-    .repos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
+    /* Ambient Glows */
+    .glow {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      z-index: -1;
+      opacity: 0.5;
+      animation: pulse 8s ease-in-out infinite alternate;
     }
-    .repo {
-      background: var(--card-bg-light);
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      transition: background 0.3s;
+    .glow-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: rgba(59, 130, 246, 0.15); }
+    .glow-2 { bottom: -10%; right: -10%; width: 40vw; height: 40vw; background: rgba(139, 92, 246, 0.15); animation-delay: -4s; }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.3; }
+      100% { transform: scale(1.2); opacity: 0.6; }
     }
-    body.dark-mode .repo {
-      background: var(--card-bg-dark);
+
+    /* Navbar */
+    nav {
+      position: fixed; width: 100%; top: 0;
+      padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
+      background: rgba(3, 7, 18, 0.8); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color); z-index: 100;
+      transition: padding 0.3s;
     }
-    .repo h3 {
-      margin-top: 0;
-      font-size: 1.2em;
+    nav .brand { font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px; display: flex; align-items: center; gap: 12px;}
+    nav .brand img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--accent-primary); }
+    nav .links a {
+      color: var(--text-muted); text-decoration: none; margin-left: 30px;
+      font-weight: 500; transition: color 0.3s; font-size: 0.95rem;
     }
-    .repo p {
-      margin: 8px 0;
-      color: #555;
+    nav .links a:hover { color: var(--text-main); text-shadow: 0 0 10px var(--accent-glow); }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 150px 20px 80px; }
+
+    /* Hero Section */
+    .hero { text-align: center; margin-bottom: 100px; animation: fadeUp 1s ease-out; }
+    .hero .badge {
+      display: inline-block; padding: 8px 16px; background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 50px;
+      color: var(--accent-primary); font-size: 0.85rem; font-weight: 600; margin-bottom: 24px;
+      letter-spacing: 1px; text-transform: uppercase;
     }
-    body.dark-mode .repo p {
-      color: #bbb;
+    .hero h1 {
+      font-size: 4.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 24px;
+      background: linear-gradient(to right, #fff, #9ca3af);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      letter-spacing: -2px;
     }
-    footer {
-      text-align: center;
-      margin: 40px 0;
-      background: var(--card-bg-light);
-      color: var(--text-light);
-      padding: 30px 20px;
-      font-size: 0.95em;
-      border-radius: 12px;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-      transition: background 0.3s, color 0.3s;
+    .hero p { font-size: 1.25rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 40px; }
+    .hero .actions { display: flex; gap: 16px; justify-content: center; }
+    .btn {
+      padding: 14px 28px; border-radius: 12px; font-weight: 600; text-decoration: none;
+      transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 8px;
     }
-    body.dark-mode footer {
-      background: var(--card-bg-dark);
-      color: var(--text-dark);
+    .btn-primary { background: var(--accent-primary); color: #fff; box-shadow: 0 0 20px var(--accent-glow); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 30px var(--accent-glow); }
+    .btn-outline { background: rgba(255,255,255,0.05); color: var(--text-main); border: 1px solid var(--border-color); }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+
+    /* Terminal Window */
+    .terminal {
+      background: #0f172a; border-radius: 16px; border: 1px solid var(--border-color);
+      overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+      margin: 0 auto 80px; max-width: 800px; animation: fadeUp 1.2s ease-out;
     }
-    a {
-      color: var(--primary);
-      text-decoration: none;
+    .term-header { background: #1e293b; padding: 12px 20px; display: flex; gap: 8px; align-items: center; border-bottom: 1px solid var(--border-color); }
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot-r { background: #ef4444; } .dot-y { background: #eab308; } .dot-g { background: #22c55e; }
+    .term-body { padding: 30px; font-family: 'Fira Code', monospace; font-size: 0.95rem; color: #cbd5e1; }
+    .prompt { color: #3b82f6; font-weight: 600; }
+    .path { color: #22c55e; }
+    .cmd { color: #f8fafc; }
+    .typewriter { overflow: hidden; white-space: nowrap; margin: 0 auto; letter-spacing: 1px; animation: typing 2.5s steps(40, end); }
+    
+    @keyframes typing { from { width: 0 } to { width: 100% } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Bento Grid */
+    .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 50px; letter-spacing: -1px; }
+    .bento { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 100px; }
+    .card {
+      background: var(--bg-surface); border: 1px solid var(--border-color);
+      border-radius: var(--card-radius); padding: 32px; backdrop-filter: blur(10px);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative; overflow: hidden;
     }
-    a:hover {
-      text-decoration: underline;
+    .card::before {
+      content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+      transition: left 0.7s;
     }
-    .highlight-link {
-      color: #ffffff;
-      font-weight: bold;
+    .card:hover::before { left: 150%; }
+    .card:hover { transform: translateY(-10px) scale(1.02); border-color: rgba(59, 130, 246, 0.5); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    
+    .card-icon { width: 48px; height: 48px; background: rgba(59, 130, 246, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; color: var(--accent-primary); border: 1px solid rgba(59, 130, 246, 0.2); }
+    .card h3 { font-size: 1.5rem; margin-bottom: 12px; }
+    .card p { color: var(--text-muted); margin-bottom: 20px; }
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { background: rgba(255,255,255,0.05); padding: 6px 14px; border-radius: 8px; font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.1); }
+
+    /* Timeline */
+    .timeline { max-width: 800px; margin: 0 auto 100px; border-left: 2px solid var(--border-color); padding-left: 30px; }
+    .tl-item { position: relative; margin-bottom: 40px; }
+    .tl-item::before {
+      content: ''; position: absolute; left: -37px; top: 5px; width: 12px; height: 12px;
+      background: var(--bg-base); border: 2px solid var(--accent-primary); border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-glow);
     }
-    .highlight-link:hover {
-      color: #e0e0e0;
+    .tl-item h4 { font-size: 1.3rem; color: #fff; margin-bottom: 4px; }
+    .tl-item .date { color: var(--accent-primary); font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; display: block; }
+    .tl-item p { color: var(--text-muted); line-height: 1.7; }
+
+    /* Projects */
+    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 80px; }
+    .project-card {
+      display: block; text-decoration: none; color: inherit;
+      background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 16px;
+      padding: 24px; transition: all 0.3s;
     }
-    .tech-icons img {
-    width: 40px !important;
-    height: 40px !important;
-    border: none;
-    vertical-align: middle;
-    }
-    .badge {
-      display: inline-block;
-      background: var(--badge-bg);
-      color: #333;
-      border-radius: 12px;
-      padding: 3px 12px;
-      font-size: 0.85em;
-      margin-right: 6px;
-      margin-bottom: 6px;
-      font-weight: bold;
-    }
-    body.dark-mode .badge {
-      background: var(--badge-bg-dark);
-      color: #eee;
-    }
-    .page-count {
-      font-size: 1em;
-      color: #080000;
-      font-weight: bold;
-      margin-top: 10px;
-      text-align: center;
-    }
-    body.dark-mode .page-count {
-      color: #ccc;
+    .project-card:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); transform: translateY(-4px); }
+    .project-card h4 { font-size: 1.2rem; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+    .project-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px; }
+
+    footer { text-align: center; padding: 40px 20px; border-top: 1px solid var(--border-color); margin-top: 50px; color: var(--text-muted); }
+    .stats { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: rgba(255,255,255,0.03); border-radius: 50px; font-size: 0.85rem; margin-top: 20px; border: 1px solid rgba(255,255,255,0.05); }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 3rem; } nav .links { display: none; }
+      .bento { grid-template-columns: 1fr; } .terminal { font-size: 0.8rem; }
     }
   </style>
 </head>
 <body>
-  <button class="toggle-btn" onclick="toggleMode()" aria-label="Toggle dark mode">🌙 Dark Mode</button>
-  <header>
-    <img 
-      src="https://avatars.githubusercontent.com/u/20415806?v=4" alt="Anil Jangir"
-      style="border-radius: 50%; width: 160px; height: 160px; object-fit: cover; border: 4px solid white;" 
-    />
-    <h1 style="margin: 15px 0 5px; font-size: 2.2em;">Anil Jangir</h1>
-    <p style="font-size: 1.1em; margin: 5px 0;">
-      👨‍💼 <strong>DevOps Engineer</strong> with <strong>9+ years</strong>
-    </p>
-    <p style="margin: 10px 0; font-size: 1em;">
-      ✨ Platform Engineer |  👨🏻‍💻Bash | ♾️CI/CD | 🔭Observability | ⚙️Automation<br/>
-      🌱 Learning: <strong>
-        <img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" 
-             alt="Kubernetes" 
-             style="width: 20px; height: 20px; vertical-align: middle;" /> 
-        Kubernetes
-      </strong>
-    </p>
-    <div class="tech-icons" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 50px 0 10px 0;">
 
-  <a href="https://aws.amazon.com" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="16" height="16" title="AWS" />
-  </a> 
-  <a href="https://azure.microsoft.com/en-in/" target="_blank" rel="noreferrer">
-    <img src="https://www.vectorlogo.zone/logos/microsoft_azure/microsoft_azure-icon.svg" alt="azure" width="16" height="16" title="Azure" />
-  </a>
-  <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noreferrer">
-    <img src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg" alt="bash" width="10" height="10" title="Bash" />
-  </a>
-  <a href="https://www.docker.com/" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="docker" width="10" height="10" title="Docker" />
-  </a>
-  <a href="https://cloud.google.com" target="_blank" rel="noreferrer">
-    <img src="https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg" alt="gcp" width="10" height="10" title="GCP" />
-  </a>
-  <a href="https://git-scm.com/" target="_blank" rel="noreferrer">
-    <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="10" height="10" title="Git" />
-  </a>
-  <a href="https://www.jenkins.io" target="_blank" rel="noreferrer">
-    <img src="https://www.vectorlogo.zone/logos/jenkins/jenkins-icon.svg" alt="jenkins" width="10" height="10" title="Jenkins" />
-  </a>
-  <a href="https://www.linux.org/" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="linux" width="10" height="10" title="Linux" />
-  </a>
-  <a href="https://www.nginx.com" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nginx/nginx-original.svg" alt="nginx" width="10" height="10" title="Nginx" />
-  </a>
-  <a href="https://www.zabbix.com/" target="_blank" rel="noreferrer">
-    <img src="https://www.vectorlogo.zone/logos/zabbix/zabbix-icon.svg" alt="Zabbix" width="10" height="10" title="Zabbix" />
-  </a>
-  <a href="https://www.godaddy.com" target="_blank" rel="noreferrer">
-    <img src="https://www.vectorlogo.zone/logos/godaddy/godaddy-icon.svg" alt="Godaddy" width="10" height="10" title="GoDaddy" />
-  </a>
-  <a href="https://httpd.apache.org/" target="_blank" rel="noreferrer">
-    <img src="https://www.vectorlogo.zone/logos/apache/apache-ar21.svg" alt="Apache2" width="10" height="10" title="Apache2" />
-  </a>
-  <a href="https://www.cloudflare.com/" target="_blank" rel="noreferrer">
-    <img src="https://www.vectorlogo.zone/logos/cloudflare/cloudflare-icon.svg" alt="Cloudflare" width="10" height="10" title="Cloudflare" />
-  </a>
-  <a href="https://www.terraform.io/" target="_blank" rel="noreferrer">
-    <img src="https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg" alt="Terraform" width="10" height="10" title="Terraform" />
-  </a>
-</div>
+  <!-- Ambient Background -->
+  <div class="bg-grid"></div>
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+
+  <nav>
+    <div class="brand">
+      <img src="https://avatars.githubusercontent.com/u/20415806?v=4" alt="Anil">
+      Anil Jangir
     </div>
-    <p style="margin-top: 30px;">
-      📫 
-      <a href="mailto:aniljahangir8@gmail.com" class="highlight-link">
-        aniljahangir8@gmail.com
-      </a> &nbsp;|&nbsp;
-      <a href="https://github.com/aniljahangir8" target="_blank" rel="noopener noreferrer" class="highlight-link">
-        GitHub
-      </a> &nbsp;|&nbsp;
-      <a href="https://www.linkedin.com/in/anil-jangir-06344a139/" target="_blank" rel="noopener noreferrer" class="highlight-link">
-        LinkedIn
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    
+    <section class="hero" id="about">
+      <div class="badge">9+ Years of Excellence</div>
+      <h1>Architecting Resilient Cloud Ecosystems</h1>
+      <p>I build, scale, and secure high-performance infrastructure. Mastering the art of automation across AWS, GCP, Azure, and Kubernetes.</p>
+      <div class="actions">
+        <a href="mailto:aniljahangir8@gmail.com" class="btn btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          Contact Me
+        </a>
+        <a href="https://github.com/aniljahangir8" target="_blank" class="btn btn-outline">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          GitHub
+        </a>
+      </div>
+    </section>
+
+    <!-- Interactive Terminal -->
+    <div class="terminal">
+      <div class="term-header">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+      </div>
+      <div class="term-body">
+        <div><span class="prompt">anil@macbook</span> <span class="path">~/portfolio</span> $ <span class="cmd">./deploy.sh --env production</span></div>
+        <div style="color: #64748b; margin: 10px 0;">[i] Initializing cloud infrastructure...</div>
+        <div style="color: #22c55e;">✔ Validating Terraform state</div>
+        <div style="color: #22c55e;">✔ Compiling K8s manifests globally</div>
+        <div style="color: #22c55e;">✔ Triggering ArgoCD sync on cluster 'prod-omega'</div>
+        <br>
+        <div class="typewriter"><span class="prompt">anil@macbook</span> <span class="path">~/portfolio</span> $ <span class="cmd">System uptime: 9 years, 0 downtime. Ready for next scaling event.</span></div>
+      </div>
+    </div>
+
+    <h2 class="section-title" id="expertise">Core Expertise</h2>
+    <div class="bento">
+      <div class="card">
+        <div class="card-icon">☁️</div>
+        <h3>Cloud Architecture</h3>
+        <p>Designing multi-region, fault-tolerant VPCs and scalable compute clusters on top tier providers.</p>
+        <div class="tech-tags">
+          <span class="tag">AWS</span><span class="tag">GCP</span><span class="tag">Azure</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🛳️</div>
+        <h3>Container Orchestration</h3>
+        <p>Expertise in managing complex microservice ecosystems across numerous enterprise environments.</p>
+        <div class="tech-tags">
+          <span class="tag">Kubernetes</span><span class="tag">Docker</span><span class="tag">Helm</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>CI/CD Automation</h3>
+        <p>Creating highly robust delivery pipelines with strict zero-downtime deployment capabilities.</p>
+        <div class="tech-tags">
+          <span class="tag">GitHub Actions</span><span class="tag">Jenkins</span><span class="tag">ArgoCD</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏗️</div>
+        <h3>Infrastructure as Code</h3>
+        <p>Executing immutable infrastructure provisioning for fully repeatable disaster recovery.</p>
+        <div class="tech-tags">
+          <span class="tag">Terraform</span><span class="tag">Ansible</span><span class="tag">Bash</span>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title" id="experience">Career Milestones</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <span class="date">Present</span>
+        <h4>DevOps / Kubernetes Platform Lead</h4>
+        <p>Led enterprise-scale Kubernetes migrations (EKS, AKS, GKE) across 99+ dynamic production networks. Decreased system deployment bottlenecks by 80% and successfully achieved 99.99% core service uptime through GitOps enforcement.</p>
+      </div>
+      <div class="tl-item">
+        <span class="date">Previous Journey</span>
+        <h4>Cloud Migrations & Site Reliability</h4>
+        <p>Spearheaded comprehensive cloud modernization for 25+ legacy applications. Integrated heavy Prometheus, Grafana, and ELK observability stacks which reduced Mean Time To Recovery (MTTR) by 40% and crushed critical system incidents.</p>
+      </div>
+      <div class="tl-item">
+        <span class="date">Foundation</span>
+        <h4>Platform Engineering</h4>
+        <p>Engineered powerful internal developer platforms utilizing Terraform and Ansible modules to serve 47+ backend microservices. Instilled deep automated testing which drastically lowered release regression rates.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title" id="projects">Open Source & Tools</h2>
+    <div class="projects">
+      <a href="https://github.com/Aniljahangir8/Keylogger" target="_blank" class="project-card">
+        <h4>Keylogger <span>↗</span></h4>
+        <p>A highly minimal but effective Linux and Bash-oriented keystroke logging utility.</p>
+        <div class="tech-tags"><span class="tag">Bash</span><span class="tag">Linux</span></div>
       </a>
-    </p>
-    <div class="page-count" id="up_count">Page views: ...</div>
-  </header>
-
-  <section class="boxed-section">
-    <div style="max-width: 900px; margin: auto; text-align: center;">
-      <h1 style="text-align: center; font-size: 2.5em; color: #324a71;">👨‍💻 About Me</h1>
-      <div style="font-size: 18px; line-height: 1.6;">
-  <p>👨‍💻 <strong>DevOps Engineer</strong> | with over <strong>9 Years</strong> of Cloud & Infrastructure Expertise | AWS | Docker | Kubernetes | Automation Enthusiast</p>
-
-  <p>
-    Born in <strong>Rajasthan</strong> <em>(Tudiyaan Da Putt)</em>, who journeyed to <strong>Chandigarh</strong> for education and growth, and now thriving in <strong>Gujarat</strong> — my career is as dynamic as the cloud environments I manage.
-  </p>
-
-  <p>
-    With <strong>9 years of hands-on experience</strong>, I specialize in building, automating, and optimizing scalable infrastructures across <strong>AWS, Google Cloud, and Azure</strong>.
-  </p>
-
-  <!--<p>
-    🛠 <strong>Tools & Technologies:</strong><br>
-    Linux & Windows Servers | Docker | Kubernetes | Terraform | Ansible | Jenkins | GitLab CI/CD | Apache | NGINX | Prometheus | Grafana | ELK Stack | Bash | Python | Git | MySQL | MongoDB | Redis | RabbitMQ | Cloudflare | S3 | EC2 | VPC | IAM
-  </p>-->
-
-  <p>
-    🚀 <strong>What I Do Best:</strong><br>
-    • Architecting & maintaining secure, resilient cloud infrastructures<br>
-    • Automating deployments and scaling applications smoothly<br>
-    • Leading CI/CD implementations for faster, safer releases<br>
-    • Collaborating with dev teams to streamline development lifecycles<br>
-    • Monitoring performance and proactively resolving incidents
-  </p>
-
-  <p>
-    🧠 I stay ahead by constantly learning new technologies and adopting DevOps best practices to deliver <strong>innovative, efficient, and secure solutions</strong>. Whether it's troubleshooting under pressure or driving process improvements, I bring both technical depth and strategic thinking to the table.
-  </p>
-
-  <p>
-    📩 Let’s connect — whether you’re hiring, collaborating, or just want to geek out over cloud architecture.
-  </p>
-</div>
-  </section>
-
-  <section id="experience" class="boxed-section">
-    <h2>💼 Experience Highlights</h2>
-    <div style="display: flex; flex-direction: column; gap: 24px;">
-      <div class="experience-card" style="border-left: 6px solid var(--primary);">
-        <h3>🔧 DevOps/K8s Platform</h3>
-        <p>
-          Drove enterprise-wide Kubernetes adoption (EKS, AKS, GKE, on-prem) across <strong>99+ production environments</strong>, slashing deployment times by <strong>80%</strong> and achieving <strong>99.99% uptime</strong>. Orchestrated end-to-end CI/CD automation with GitHub Actions, Jenkins, and ArgoCD, reducing manual release effort by <strong>80%</strong> and accelerating delivery velocity.
-        </p>
-      </div>
-      <div class="experience-card" style="border-left: 6px solid #fdcb6e;">
-        <h3>☁️ Cloud Migrations & Reliability</h3>
-        <p>
-          Drove cloud modernization for <strong>25+ core applications</strong> on AWS and Azure, unifying infrastructure as code and observability. Reduced MTTR by <strong>40%</strong> and critical incidents by <strong>35%</strong> through Prometheus, Grafana, and ELK integrations.
-        </p>
-      </div>
-      <div class="experience-card" style="border-left: 6px solid #00b894;">
-        <h3>🏗️ Platform Engineering</h3>
-        <p>
-          Engineered robust internal platforms using <strong>Terraform, Ansible, and Helm/Kustomize</strong> to power <strong>47+ microservices</strong>. Achieved seamless zero-downtime deployments and championed GitOps practices, tripling release frequency and reducing rollbacks by <strong>60%</strong>.
-        </p>
-      </div>
+      <a href="https://github.com/Aniljahangir8/LAMP-Installation" target="_blank" class="project-card">
+        <h4>LAMP Automator <span>↗</span></h4>
+        <p>Classical auto-installer script suite for setting up rapid LAMP stacks in any Debian environment.</p>
+        <div class="tech-tags"><span class="tag">PHP</span><span class="tag">MySQL</span></div>
+      </a>
+      <a href="https://github.com/Aniljahangir8/Redirect-Code" target="_blank" class="project-card">
+        <h4>Core Htaccess <span>↗</span></h4>
+        <p>A repository containing optimized Apache `.htaccess` structures for advanced layer 7 routing.</p>
+        <div class="tech-tags"><span class="tag">Apache</span><span class="tag">Routing</span></div>
+      </a>
     </div>
-  </section>
 
-<section  id="experience" class="boxed-section">
-<h1 style="text-align: center; font-size: 2.5em; color: #324a71;">📌 Pinned Projects</h1>
-    <div class="repos">
-      <div class="repo">
-        <h3><a href="https://github.com/Aniljahangir8/Keylogger">🔐 Keylogger</a></h3>
-        <p>Lets take a logs which you pressed on keyboard.</p>
-        <span class="badge" style="font-weight: bold;">Linux</span>
-        <span class="badge" style="font-weight: bold;">Bash</span>
-        <span class="badge" style="font-weight: bold;">Simple Code</span>
-      </div>
-
-      <div class="repo">
-        <h3><a href="https://github.com/Aniljahangir8/LAMP-Installation">🌐 LAMP Stack</a></h3>
-        <p>Lamp Stack Installation Guide Helps me in old Days</p>
-        <span class="badge" style="font-weight: bold;">LAMP</span>
-        <span class="badge" style="font-weight: bold;">LINUX</span>
-        <span class="badge" style="font-weight: bold;">PHP</span>
-      </div>
-
-      <div class="repo">
-        <h3><a href="https://github.com/Aniljahangir8/Redirect-Code">🅱 Htaccess Code</a></h3>
-        <p>Redirects to any one or any other location Basic redirects</p>
-        <span class="badge" style="font-weight: bold;">Apache2</span>
-        <span class="badge" style="font-weight: bold;" >Htaccess</span>
-        <span class="badge"style="font-weight: bold;" >Redirect</span>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Other sections and footer as before -->
+  </div>
 
   <footer>
-    <p style="margin: 0;">
-      Designed & developed by <strong>Anil Jangir</strong> • Profile curated via 
-      <a href="https://github.com/aniljahangir8" target="_blank" style="color: #96a9bd; text-decoration: none;">
-        GitHub repo
-      </a>
-    </p>
+    <p>© 2026 Anil Jangir. All rights reserved.</p>
+    <div><a href="https://www.linkedin.com/in/anil-jangir-06344a139/" target="_blank" style="color:var(--text-muted); text-decoration:none; margin: 10px; display: inline-block;">LinkedIn</a> | <a href="https://github.com/aniljahangir8" target="_blank" style="color:var(--text-muted); text-decoration:none; margin: 10px; display: inline-block;">GitHub</a></div>
+    
+    <div class="stats" id="up_count">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+      Loading telemetry...
+    </div>
   </footer>
 
-<script>
-    // Dark/Light mode toggle with persistence
-    function toggleMode() {
-      document.body.classList.toggle('dark-mode');
-      let darkMode = document.body.classList.contains('dark-mode');
-      document.querySelector('.toggle-btn').textContent =
-        darkMode ? '☀️ Light Mode' : '🌙 Dark Mode';
-      localStorage.setItem('darkMode', darkMode);
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      // Restore theme preference
-      if (localStorage.getItem('darkMode') === 'true') {
-        document.body.classList.add('dark-mode');
-        document.querySelector('.toggle-btn').textContent = '☀️ Light Mode';
-      } else {
-        document.body.classList.remove('dark-mode');
-        document.querySelector('.toggle-btn').textContent = '🌙 Dark Mode';
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        await fetch("https://api.counterapi.dev/v2/devscsops/githu-counter/up");
+        let res = await fetch("https://api.counterapi.dev/v2/devscsops/githu-counter/stats");
+        let data = await res.json();
+        const views = data.data.up_count || "N/A";
+        document.getElementById('up_count').innerHTML = `
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          ${views} Global Views
+        `;
+      } catch (err) {
+        document.getElementById('up_count').innerText = "Telemetry Offline";
       }
+    });
 
-      // Page view counter logic
- async function updatePageViews() {
-  try {
-    await fetch("https://api.counterapi.dev/v2/devscsops/githu-counter/up");
-    let statsRes = await fetch("https://api.counterapi.dev/v2/devscsops/githu-counter/stats");
-    let statsData = await statsRes.json();
-    // Use the correct property from API response
-    document.getElementById('up_count').textContent =
-      `Page views: ${statsData.data.up_count || "N/A"}`;
-  } catch (err) {
-    console.error("Error fetching counter:", err);
-    document.getElementById('up_count').textContent = "Error loading stats";
-  }
-}
-      updatePageViews();
+    // Ambient glow mouse movement
+    document.addEventListener('mousemove', (e) => {
+      const g1 = document.querySelector('.glow-1');
+      const g2 = document.querySelector('.glow-2');
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+      g1.style.transform = `translate(${x * 50}px, ${y * 50}px)`;
+      g2.style.transform = `translate(${x * -30}px, ${y * -30}px)`;
     });
   </script>
 </body>
